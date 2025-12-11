@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tiwari Pure BEVERAGES | Official Website</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&display=swap" rel="stylesheet">
+
+    <style>
+        /* =========================================
+           GLOBAL STYLES
+           ========================================= */
+        :root {
+            --water-blue: #00c6ff;
+            --coke-red: #e63946;
+            --dark: #1d1d1f;
+            --gray: #f5f5f7;
+            --white: #ffffff;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--white);
+            color: var(--dark);
+            overflow-x: hidden;
+        }
+
+        html { scroll-behavior: smooth; }
+
+        /* --- Navbar --- */
+        nav {
+            position: fixed; top: 0; width: 100%; z-index: 1000;
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 15px 8%;
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: saturate(180%) blur(20px);
+            border-bottom: 1px solid rgba(0,0,0,0.1);
+        }
+
+        .brand-logo {
+            font-size: 1.4rem; font-weight: 900; color: var(--dark);
+            text-transform: uppercase; letter-spacing: -0.5px;
+        }
+        .brand-logo span { color: var(--water-blue); }
+
+        .nav-btn {
+            background: var(--dark); color: white; padding: 10px 25px; 
+            border-radius: 50px; text-decoration: none; font-weight: 600;
+            transition: 0.3s;
+        }
+        .nav-btn:hover { background: #333; transform: scale(1.05); }
+
+        /* =========================================
+           SECTION 1: WATER (HERO - TAGADA WALA)
+           ========================================= */
+        .hero-water {
+            min-height: 100vh; /* Full Screen */
+            display: flex; align-items: center; justify-content: space-between;
+            padding: 100px 8% 0;
+            background: linear-gradient(135deg, #fdfbfb 0%, #ebedee 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Background Blob for Water */
+        .water-bg-blob {
+            position: absolute; right: -10%; top: -10%;
+            width: 50vw; height: 50vw;
+            background: radial-gradient(circle, rgba(0,198,255,0.15) 0%, rgba(255,255,255,0) 70%);
+            border-radius: 50%; z-index: 0;
+        }
+
+        .water-content {
+            flex: 1; z-index: 2;
+            animation: slideInLeft 1s ease forwards;
+        }
+
+        .water-content h1 {
+            font-size: 4.5rem; font-weight: 900; line-height: 1.1; margin-bottom: 20px;
+            color: var(--dark);
+        }
+        .water-content h1 span { color: var(--water-blue); display: block; }
+        
+        .water-content p {
+            font-size: 1.3rem; color: #666; margin-bottom: 30px; max-width: 450px;
+        }
+
+        .water-visual {
+            flex: 1; display: flex; justify-content: flex-end; position: relative; z-index: 1;
+        }
+
+        .bottle-img {
+            height: 80vh; /* Badi Bottle */
+            transform: rotate(15deg) translateY(50px);
+            filter: drop-shadow(-20px 20px 30px rgba(0,0,0,0.15));
+            animation: floatBig 6s ease-in-out infinite;
+        }
+
+        /* Ice Cubes */
+        .ice {
+            position: absolute; font-size: 2.5rem;
+            animation: floatIce 4s ease-in-out infinite;
+        }
+
+        /* =========================================
+           SECTION 2: COLD DRINK (COKE STYLE)
+           ========================================= */
+        .section-coke {
+            padding: 100px 8%;
+            background: #fff; /* Clean White */
+            display: flex; align-items: center; justify-content: space-between;
+            position: relative;
+        }
+
+        .coke-content { flex: 1; padding-right: 50px; }
+        
+        /* Scroll Reveal Class */
+        .hidden { opacity: 0; transform: translateY(50px); transition: 1s ease; }
+        .show { opacity: 1; transform: translateY(0); }
+
+        .coke-content h2 {
+            font-size: 4rem; font-weight: 900; line-height: 1.1; margin-bottom: 20px;
+            color: var(--coke-red); /* Coca Cola Red Text */
+        }
+        
+        .coke-content p { font-size: 1.3rem; color: #555; line-height: 1.6; }
+
+        .coke-visual { flex: 1; display: flex; justify-content: center; }
+
+        .can-img {
+            height: 500px;
+            transform: rotate(-10deg);
+            filter: drop-shadow(20px 20px 40px rgba(230, 57, 70, 0.2)); /* Red Glow Shadow */
+            transition: transform 0.5s;
+        }
+        .can-img:hover { transform: rotate(0deg) scale(1.1); }
+
+        /* =========================================
+           SECTION 3: ORDER FORM
+           ========================================= */
+        .order-section {
+            padding: 100px 20px;
+            background: var(--gray);
+            display: flex; justify-content: center;
+        }
+
+        .form-card {
+            background: white;
+            width: 100%; max-width: 500px;
+            padding: 50px;
+            border-radius: 25px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.05);
+            text-align: center;
+        }
+
+        .form-card h2 { font-size: 2rem; margin-bottom: 30px; }
+
+        .input-group { margin-bottom: 20px; text-align: left; }
+        
+        .input-field {
+            width: 100%; padding: 16px;
+            background: #f0f2f5;
+            border: 2px solid transparent; border-radius: 12px;
+            font-size: 1rem; outline: none; transition: 0.3s;
+        }
+        .input-field:focus { background: white; border-color: var(--water-blue); }
+
+        .btn-order {
+            width: 100%; padding: 18px;
+            background: linear-gradient(90deg, #111, #333);
+            color: white; border: none; border-radius: 12px;
+            font-size: 1.1rem; font-weight: bold; cursor: pointer;
+            transition: 0.3s; margin-top: 10px;
+        }
+        .btn-order:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(0,0,0,0.2); }
+
+        /* Animations */
+        @keyframes slideInLeft { from { opacity: 0; transform: translateX(-50px); } to { opacity: 1; transform: translateX(0); } }
+        @keyframes floatBig { 0%, 100% { transform: rotate(15deg) translateY(0px); } 50% { transform: rotate(15deg) translateY(-20px); } }
+        @keyframes floatIce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-15px); } }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .hero-water, .section-coke { flex-direction: column; text-align: center; padding-top: 120px; }
+            .water-content h1, .coke-content h2 { font-size: 3rem; }
+            .water-visual { justify-content: center; margin-top: -30px; }
+            .bottle-img { height: 50vh; transform: rotate(10deg); }
+            .coke-content { padding-right: 0; margin-bottom: 40px; }
+            .can-img { height: 350px; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="brand-logo">Tiwari <span>Pure</span></div>
+        <a href="#order" class="nav-btn">Order Now</a>
+    </nav>
+
+    <section class="hero-water">
+        <div class="water-bg-blob"></div>
+
+        <div class="water-content">
+            <h1>Thanda<br><span>Matlab Tiwari.</span></h1>
+            <p>Lucknow's #1 Premium Water Delivery. Purity you can trust, Refreshment you deserve.</p>
+            <button class="nav-btn" onclick="document.getElementById('order').scrollIntoView()" style="padding: 15px 35px;">Order Water 💧</button>
+        </div>
+
+        <div class="water-visual">
+            <span class="ice" style="top: 20%; left: 0;">❄</span>
+            <span class="ice" style="bottom: 30%; right: 10%; font-size: 1.5rem;">🧊</span>
+            <img src="https://pngimg.com/d/water_bottle_PNG98956.png" class="bottle-img" alt="Water Bottle">
+        </div>
+    </section>
+
+    <section class="section-coke">
+        <div class="coke-content hidden">
+            <h2>Fizz that <br>Sparkles! ✨</h2>
+            <p>Taste the explosion of flavor. Humare paas har brand ki Cold Drink bulk mein available hai. Best rates for Parties & Events.</p>
+            <button class="nav-btn" onclick="document.getElementById('order').scrollIntoView()" style="background: var(--coke-red); margin-top: 20px;">Order Cold Drink 🍹</button>
+        </div>
+
+        <div class="coke-visual hidden" style="transition-delay: 0.2s;">
+            <img src="https://pngimg.com/d/cocacola_PNG18.png" class="can-img" alt="Coca Cola">
+        </div>
+    </section>
+
+    <section class="order-section" id="order">
+        <div class="form-card hidden">
+            <h2>Place Order 🚀</h2>
+            <p style="color: #666; margin-bottom: 20px;">Direct WhatsApp Delivery System</p>
+
+            <form onsubmit="sendWhatsapp(); return false;">
+                <div class="input-group">
+                    <input type="text" class="input-field" id="name" placeholder="Your Name" required>
+                </div>
+                <div class="input-group">
+                    <input type="number" class="input-field" id="phone" placeholder="Mobile Number" required>
+                </div>
+                <div class="input-group">
+                    <select class="input-field" id="product">
+                        <option>1L Water Bottle (Peti)</option>
+                        <option>20L Camper</option>
+                        <option>Cold Drink Box (Mix)</option>
+                        <option>Party Bulk Order</option>
+                    </select>
+                </div>
+                <div class="input-group">
+                    <input type="text" class="input-field" id="address" placeholder="Full Address" required>
+                </div>
+
+                <button type="submit" class="btn-order">Send to WhatsApp</button>
+            </form>
+        </div>
+    </section>
+
+    <footer style="text-align: center; padding: 30px; color: #888; background: var(--gray);">
+        &copy; 2025 Tiwari Pure Beverages. Lucknow.
+    </footer>
+
+    <script>
+        // WhatsApp Sender
+        function sendWhatsapp() {
+            let name = document.getElementById("name").value;
+            let phone = document.getElementById("phone").value;
+            let product = document.getElementById("product").value;
+            let address = document.getElementById("address").value;
+            
+            // AAPKA NUMBER
+            let myNumber = "919453983879"; 
+
+            let msg = "*New Order Request!* 🚀%0a------------------%0a👤 Name: ${name}%0a📱 Phone: ${phone}%0a🛒 Product: ${product}%0a📍 Address: ${address}";
+            
+            window.open('https://wa.me/${myNumber}?text=${msg}', "_blank");
+        }
+
+        // Scroll Animation Logic
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('show');
+                }
+            });
+        });
+
+        const hiddenElements = document.querySelectorAll('.hidden');
+        hiddenElements.forEach((el) => observer.observe(el));
+    </script>
+
+</body>
+</html>
